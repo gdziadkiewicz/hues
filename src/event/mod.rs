@@ -62,6 +62,6 @@ pub enum HueEventData {
     ZigbeeConnectivity(serde_json::Value),
     ZigbeeDeviceDiscovery(serde_json::Value),
     Zone(serde_json::Value),
-    #[serde(other)]
+    #[serde(untagged)]
     Unknown,
 }
