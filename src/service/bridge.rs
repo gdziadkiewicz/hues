@@ -1174,6 +1174,8 @@ impl BridgeBuilder {
             return Err(BridgeDiscoveryError::MDNSUnavailable);
         }
 
+        // TODO Fix the never_loop in GH-ISSUE
+        #[warn(clippy::never_loop)]
         while let Some(Ok(response)) = stream.next().await {
             log::debug!("{:?}", &response);
             for rec in response.answers {

@@ -179,6 +179,8 @@ impl BridgeClient {
         {
             Ok(res) => match res.json::<Vec<super::v1::RegisterResponse>>().await {
                 Ok(successes_or_errors) => {
+                    // TODO Fix the never_loop in GH-ISSUE
+                    #[warn(clippy::never_loop)]
                     for item in successes_or_errors {
                         match item {
                             RegisterResponse::Success { success } => {
